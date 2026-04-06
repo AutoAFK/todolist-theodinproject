@@ -1,5 +1,16 @@
 # Todo List Project
 
+## Disclaimer
+
+As of 07-April 2026 this project will be the most basic implementation possible which will include:
+
+- Creating a task
+- Removing a task
+- Save all tasks
+- Display all on completed and still going
+
+Later on I will add more and more ideas as I get to more advance concepts of TheOdinProject.
+
 ## Brainstorming Ideas
 
 So I have used some todo list applications and I have seen myself with the following:
