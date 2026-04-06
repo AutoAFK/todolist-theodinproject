@@ -21,3 +21,24 @@ Some new ideas to add:
 - A template for a task or project can be amazing.
 - Notification about tasks that need to be completed.
 - Some gadets like timers for tasks (something like [pomofocus](https://pomofocus.io/))
+
+## System Design
+
+### Task
+
+```json
+{
+  "project-id": "UUID",
+  "id": "UUID But can also be just a number",
+  "title": "hello",
+  "description": "longer text would be here",
+  "creation": "date of creation",
+  "end-date": "the end date assigned to the task",
+  "completed": false,
+  "archived": false,
+}
+```
+
+For the beginning I think I would focous more on how the task would be outside of a group. Only later on I should implement anything about grouping.
+
+- Should display completed tasks on another list rather than the same list.
