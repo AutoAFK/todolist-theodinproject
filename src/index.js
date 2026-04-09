@@ -1,9 +1,9 @@
 class Task {
   /** @enum {string} */
   static TaskStatus = {
-    1: "In Progress",
-    2: "Completed",
-    3: "Urgent",
+    inProgress: "In Progress",
+    completed: "Completed",
+    urgent: "Urgent",
   };
 
   /**
@@ -46,9 +46,9 @@ class TaskManager {
    * @param {string} description
    * @param {TaskStatus} status
    */
-  addTask(description, status) {
+  addTask(description, status = Task.TaskStatus.inProgress) {
     const task = new Task({ description, status });
-    tasksObj[task.id] = task;
+    this.tasksObj[task.id] = task;
   }
 
   removeTask(id) {
@@ -64,7 +64,23 @@ class TaskManager {
     this.tasksObj[id].setStatus(status);
   }
 
-  changeDescription(id, description){
+  changeDescription(id, description) {
     this.tasksObj[id].setDescription(description);
   }
+
+  displayAllTasks() {
+    for (const task of Object.values(this.tasksObj)) {
+      console.table({
+        ID: task.id,
+        DESCRIPTION: task.description,
+        STATUS: task.status,
+      });
+    }
+  }
 }
+
+const manager = new TaskManager();
+manager.addTask("First task");
+manager.addTask("Second task");
+
+manager.displayAllTasks();
