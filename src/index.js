@@ -77,6 +77,11 @@ class TaskManager {
       });
     }
   }
+
+  saveTasksDB(){
+    const stringify = JSON.stringify(this.tasksObj);
+    localStorage.setItem("tasks",stringify);
+  }
 }
 
 const manager = new TaskManager();
@@ -84,3 +89,7 @@ manager.addTask("First task");
 manager.addTask("Second task");
 
 manager.displayAllTasks();
+
+manager.saveTasksDB();
+
+console.log(localStorage.getItem("tasks"));
