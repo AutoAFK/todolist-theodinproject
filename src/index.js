@@ -30,7 +30,7 @@ class Task {
   }
 
   static fromJSON(id, data) {
-    return Task(id, data.description, data.status);
+    return new Task({ id, description: data.description, status: data.status });
   }
 }
 
@@ -40,6 +40,7 @@ class TaskManager {
   constructor() {
     if (TaskManager.instance) return TaskManager.instance;
     TaskManager.instance = this;
+    this.loadTasksFromDB();
   }
 
   /**
@@ -78,9 +79,21 @@ class TaskManager {
     }
   }
 
-  saveTasksDB(){
+  saveTasksDB() {
     const stringify = JSON.stringify(this.tasksObj);
-    localStorage.setItem("tasks",stringify);
+    localStorage.setItem("tasks", stringify);
+  }
+
+  loadTasksFromDB() {
+    const db = localStorage.getItem("tasks");
+    if (db === null) return;
+
+    const parsedDB = JSON.parse(db);
+    for (const [key, value] of Object.entries(parsedDB)) {
+      parsedDB[key] = Task.fromJSON(value.id, value);
+    }
+    
+    Object.assign(this.tasksObj, parsedDB);
   }
 }
 
@@ -91,5 +104,3 @@ manager.addTask("Second task");
 manager.displayAllTasks();
 
 manager.saveTasksDB();
-
-console.log(localStorage.getItem("tasks"));
