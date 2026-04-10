@@ -92,15 +92,19 @@ class TaskManager {
     for (const [key, value] of Object.entries(parsedDB)) {
       parsedDB[key] = Task.fromJSON(value.id, value);
     }
-    
     Object.assign(this.tasksObj, parsedDB);
   }
 }
 
 const manager = new TaskManager();
-manager.addTask("First task");
-manager.addTask("Second task");
+
+const testingSave = false;
 
 manager.displayAllTasks();
 
-manager.saveTasksDB();
+if (testingSave) {
+  manager.addTask("Example 1: In Progress", Task.TaskStatus.inProgress)
+  manager.addTask("Example 2: Urgent", Task.TaskStatus.urgent);
+  manager.addTask("Example 3: Completed", Task.TaskStatus.completed);
+  manager.saveTasksDB();
+}
