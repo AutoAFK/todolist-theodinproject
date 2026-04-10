@@ -98,13 +98,45 @@ class TaskManager {
 
 const manager = new TaskManager();
 
-const testingSave = false;
-
 manager.displayAllTasks();
 
+const testingSave = false;
 if (testingSave) {
-  manager.addTask("Example 1: In Progress", Task.TaskStatus.inProgress)
+  manager.addTask("Example 1: In Progress", Task.TaskStatus.inProgress);
   manager.addTask("Example 2: Urgent", Task.TaskStatus.urgent);
   manager.addTask("Example 3: Completed", Task.TaskStatus.completed);
   manager.saveTasksDB();
+}
+
+const testingChangeStatus = false;
+if (testingChangeStatus) {
+  manager.changeStatus(
+    Object.keys(manager.tasksObj)[0],
+    Task.TaskStatus.inProgress,
+  );
+  console.clear();
+  manager.displayAllTasks();
+}
+
+const testingRemoveTask = false;
+if (testingRemoveTask) {
+  manager.addTask("Dummy Task");
+  console.clear();
+  manager.displayAllTasks();
+  const keysArray = Object.keys(manager.tasksObj);
+  manager.removeTask(keysArray[keysArray.length - 1]);
+  manager.displayAllTasks();
+}
+
+const testingChangeDescription = false;
+if (testingChangeDescription) {
+  manager.addTask("Dummy Task");
+  console.clear();
+  manager.displayAllTasks();
+  const keysArray = Object.keys(manager.tasksObj);
+  manager.changeDescription(
+    keysArray[keysArray.length - 1],
+    "Dummy description changed",
+  );
+  manager.displayAllTasks();
 }
