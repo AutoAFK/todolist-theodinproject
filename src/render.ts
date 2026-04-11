@@ -1,6 +1,7 @@
 import { TodoManager } from "./todomanager.ts";
 
-export function RenderTodos(filter = null) {
+export function RenderTodos(parent: Element | null,filter = null) {
+  if (parent === null) return;
   let todos = TodoManager.getInstance().getAllTodosObjects();
   todos =
     filter === null ? todos : todos.filter((todo) => todo.status === filter);
@@ -20,5 +21,6 @@ export function RenderTodos(filter = null) {
     todoContainer.append(description, status);
     container.append(todoContainer);
   });
+  parent.append(container);
   console.log(container);
 }

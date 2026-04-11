@@ -2,6 +2,8 @@ import { TodoManager } from "./todomanager.ts";
 import {RenderTodos} from "./render.ts";
 import { TodoStatus } from "./todo.ts";
 
+const content = document.querySelector("#content");
+
 const manager = new TodoManager();
 manager.displayAllTodos();
 const testingSave = false;
@@ -12,4 +14,4 @@ if (testingSave) {
   manager.saveTodosDB();
 }
 
-RenderTodos();
+RenderTodos(content!);
