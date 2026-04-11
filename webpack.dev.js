@@ -3,7 +3,7 @@ import common from "./webpack.common.js";
 
 export default merge(common, {
   mode: "development",
-  devtool: "eval-source-map",
+  devtool: "inline-source-map",
   devServer: {
     watchFiles: ["./src/templates/template.html"],
   },
