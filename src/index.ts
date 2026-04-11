@@ -1,6 +1,7 @@
 import { TodoManager } from "./todomanager.ts";
 import {RenderTodos} from "./render.ts";
 import { TodoStatus } from "./todo.ts";
+import "./styles/main.css";
 
 const content = document.querySelector("#content");
 
