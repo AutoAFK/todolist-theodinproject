@@ -27,6 +27,22 @@ body {
   margin-bottom: 1rem;
 }
 
+.todo-filter-label {
+  margin-right: 0.5rem;
+}
+
+.todo-filter {
+  padding: 2px 5px;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px hsl(0, 0%, 20%);
+}
+
+.todo-filter:focus-visible {
+  outline: none;
+}
+
 .todo-container {
   border: 2px solid black;
   box-shadow: 8px 6px hsl(0,0%, 20%);
@@ -47,4 +63,3 @@ body {
 .todo-status::before {
   content: "Status: "
 }
-

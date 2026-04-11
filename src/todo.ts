@@ -1,5 +1,5 @@
 export enum TodoStatus {
-  InProgress = "In Progress",
+  InProgress = "InProgress",
   Completed = "Completed",
   Urgent = "Urgent",
 };

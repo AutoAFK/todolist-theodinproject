@@ -1,11 +1,13 @@
+import type { TodoStatus } from "./todo.ts";
 import { TodoManager } from "./todomanager.ts";
 
-export function RenderTodos(parent: Element | null,filter = null) {
+export function RenderTodos(parent: Element | null,filter: TodoStatus | null) {
   if (parent === null) return;
   let todos = TodoManager.getInstance().getAllTodosObjects();
   todos =
     filter === null ? todos : todos.filter((todo) => todo.status === filter);
   const container = document.createElement("div");
+  container.id = "todos-container"
   todos.forEach((todo) => {
     const todoContainer = document.createElement("div");
     todoContainer.classList.add("todo-container");

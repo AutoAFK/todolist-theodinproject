@@ -1,7 +1,7 @@
 import { TodoManager } from "./todomanager.ts";
-import {RenderTodos} from "./render.ts";
 import { TodoStatus } from "./todo.ts";
 import "./styles/main.css";
+import MainPage from "./MainPage.ts";
 
 const content = document.querySelector("#content");
 
@@ -15,4 +15,4 @@ if (testingSave) {
   manager.saveTodosDB();
 }
 
-RenderTodos(content!);
+MainPage(content!);
