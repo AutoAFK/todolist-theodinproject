@@ -1,15 +1,15 @@
-import { TaskManager } from "./taskmanager.ts";
-import {RenderTasks} from "./render.ts";
-import { TaskStatus } from "./task.ts";
+import { TodoManager } from "./todomanager.ts";
+import {RenderTodos} from "./render.ts";
+import { TodoStatus } from "./todo.ts";
 
-const manager = new TaskManager();
-manager.displayAllTasks();
+const manager = new TodoManager();
+manager.displayAllTodos();
 const testingSave = false;
 if (testingSave) {
-  manager.addTask("Example 1: In Progress", TaskStatus.InProgress);
-  manager.addTask("Example 2: Urgent", TaskStatus.Urgent);
-  manager.addTask("Example 3: Completed", TaskStatus.Completed);
-  manager.saveTasksDB();
+  manager.addTodo("Example 1: In Progress", TodoStatus.InProgress);
+  manager.addTodo("Example 2: Urgent", TodoStatus.Urgent);
+  manager.addTodo("Example 3: Completed", TodoStatus.Completed);
+  manager.saveTodosDB();
 }
 
-RenderTasks();
+RenderTodos();

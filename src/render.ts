@@ -1,28 +1,24 @@
-import { TaskManager } from "./taskmanager.ts";
+import { TodoManager } from "./todomanager.ts";
 
-/**
- * 
- * @param {TaskStatus} filter - status to filter. 
- */
-export function RenderTasks(filter = null) {
-  let tasks = TaskManager.getInstance().getAllTasksObjects();
-  tasks =
-    filter === null ? tasks : tasks.filter((task) => task.status === filter);
+export function RenderTodos(filter = null) {
+  let todos = TodoManager.getInstance().getAllTodosObjects();
+  todos =
+    filter === null ? todos : todos.filter((todo) => todo.status === filter);
   const container = document.createElement("div");
-  tasks.forEach((task) => {
-    const taskContainer = document.createElement("div");
-    taskContainer.classList.add("task-container");
+  todos.forEach((todo) => {
+    const todoContainer = document.createElement("div");
+    todoContainer.classList.add("todo-container");
 
     const description = document.createElement("p");
-    description.classList.add("task-description");
-    description.textContent = task.description;
+    description.classList.add("todo-description");
+    description.textContent = todo.description;
 
     const status = document.createElement("p");
-    status.classList.add("task-status");
-    status.textContent = task.status;
+    status.classList.add("todo-status");
+    status.textContent = todo.status;
 
-    taskContainer.append(description, status);
-    container.append(taskContainer);
+    todoContainer.append(description, status);
+    container.append(todoContainer);
   });
   console.log(container);
 }
