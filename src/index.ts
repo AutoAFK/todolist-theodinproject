@@ -7,12 +7,14 @@ const content = document.querySelector("#content");
 
 const manager = new TodoManager();
 manager.displayAllTodos();
-const testingSave = false;
+const testingSave = true;
 if (testingSave) {
-  manager.addTodo("Example 1: In Progress", TodoStatus.InProgress);
-  manager.addTodo("Example 2: Urgent", TodoStatus.Urgent);
-  manager.addTodo("Example 3: Completed", TodoStatus.Completed);
-  manager.saveTodosDB();
+  if (localStorage.getItem("todos") === null) {
+    manager.addTodo("Example 1: In Progress", TodoStatus.InProgress);
+    manager.addTodo("Example 2: Urgent", TodoStatus.Urgent);
+    manager.addTodo("Example 3: Completed", TodoStatus.Completed);
+    manager.saveTodosDB();
+  }
 }
 
 MainPage(content!);
