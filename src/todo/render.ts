@@ -3,6 +3,7 @@ import { TodoManager } from "./todomanager.ts";
 
 export function RenderTodos(parent: Element | null,filter: TodoStatus | null) {
   if (parent === null) return;
+  document.querySelector("#todos-container")?.remove();
   let todos = TodoManager.getInstance().getAllTodosObjects();
   todos =
     filter === null ? todos : todos.filter((todo) => todo.status === filter);
@@ -11,6 +12,7 @@ export function RenderTodos(parent: Element | null,filter: TodoStatus | null) {
   todos.forEach((todo) => {
     const todoContainer = document.createElement("div");
     todoContainer.classList.add("todo-container");
+    todoContainer.dataset.id = todo.id;
 
     const description = document.createElement("p");
     description.classList.add("todo-description");
@@ -26,3 +28,4 @@ export function RenderTodos(parent: Element | null,filter: TodoStatus | null) {
   parent.append(container);
   console.log(container);
 }
+

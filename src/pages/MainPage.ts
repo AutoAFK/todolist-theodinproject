@@ -1,7 +1,10 @@
-import { RenderTodos } from "./render";
-import { Todo, TodoStatus } from "./todo";
+import { RenderAddTodo } from "../components/addTodoDialog.ts";
+import { RenderTodos } from "../todo/render";
+import { TodoStatus } from "../todo/todo.ts";
 
 export default function MainPage(container: Element) {
+
+  RenderAddTodo(container);
 
   let filter = null;
 
@@ -16,11 +19,11 @@ export default function MainPage(container: Element) {
   const dropdownFilter = document.createElement("select");
   dropdownFilter.id = "todosFilter";
   dropdownFilter.classList.add("todo-filter");
-  dropdownFilter.addEventListener("change", (event)=>{
+  dropdownFilter.addEventListener("change", (event) => {
     const target = event.target as HTMLOptionElement;
     filter = target.value === "" ? null : target.value as TodoStatus;
     document.querySelector("#todos-container")?.remove();
-    RenderTodos(container,filter);
+    RenderTodos(container, filter);
   });
 
   const optionAll = document.createElement("option");
@@ -35,9 +38,9 @@ export default function MainPage(container: Element) {
     dropdownFilter.append(option);
   }
 
-  filterContainer.append(dropdownFilterLabel,dropdownFilter);
+  filterContainer.append(dropdownFilterLabel, dropdownFilter);
 
   container.append(filterContainer);
 
-  RenderTodos(container,filter);
+  RenderTodos(container, filter);
 }

@@ -1,7 +1,8 @@
-import { TodoManager } from "./todomanager.ts";
-import { TodoStatus } from "./todo.ts";
+import { TodoManager } from "./todo/todomanager.ts";
+import { TodoStatus } from "./todo/todo.ts";
 import "./styles/main.css";
-import MainPage from "./MainPage.ts";
+import MainPage from "./pages/MainPage.ts";
+
 
 const content = document.querySelector("#content");
 
